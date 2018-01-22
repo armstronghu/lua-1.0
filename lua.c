@@ -30,13 +30,13 @@ static void execstr (void)
  if (lua_isstring(obj)) lua_dostring(lua_getstring(obj));
 }
 
-void main (int argc, char *argv[])
+int main (int argc, char *argv[])
 {
  int i;
  if (argc < 2)
  {
   puts ("usage: lua filename [functionnames]");
-  return;
+  return 0;
  }
  lua_register ("callfunc", callfunc);
  lua_register ("execstr", execstr);
@@ -49,6 +49,7 @@ void main (int argc, char *argv[])
  {
   lua_call (argv[i],0);
  }
+ return 0;
 }
 
 
